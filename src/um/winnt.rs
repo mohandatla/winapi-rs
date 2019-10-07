@@ -113,7 +113,7 @@ STRUCT!{struct GROUP_AFFINITY {
 pub type PGROUP_AFFINITY = *mut GROUP_AFFINITY;
 #[cfg(any(target_arch = "x86", target_arch = "arm"))]
 pub const MAXIMUM_PROC_PER_GROUP: BYTE = 32;
-#[cfg(target_arch = "x86_64")]
+#[cfg(any(target_arch = "x86_64", target_arch = "aarch64"))]
 pub const MAXIMUM_PROC_PER_GROUP: BYTE = 64;
 pub const MAXIMUM_PROCESSORS: BYTE = MAXIMUM_PROC_PER_GROUP;
 pub type HANDLE = *mut c_void;
