@@ -933,7 +933,7 @@ STRUCT!{struct XSAVE_FORMAT { // FIXME align 16
     XmmRegisters: [M128A; 8],
     Reserved4: [BYTE; 224],
 }}
-#[cfg(target_arch = "x86_64")]
+#[cfg(any(target_arch = "x86_64", target_arch = "aarch64"))]
 STRUCT!{struct XSAVE_FORMAT { // FIXME align 16
     ControlWord: WORD,
     StatusWord: WORD,
@@ -974,7 +974,7 @@ STRUCT!{struct XSTATE_CONTEXT {
     Buffer: PVOID,
     Reserved3: DWORD,
 }}
-#[cfg(target_arch = "x86_64")]
+#[cfg(any(target_arch = "x86_64", target_arch = "aarch64"))]
 STRUCT!{struct XSTATE_CONTEXT {
     Mask: DWORD64,
     Length: DWORD,
@@ -996,7 +996,7 @@ STRUCT!{struct SCOPE_TABLE_AMD64_ScopeRecord {
 pub type PSCOPE_TABLE_AMD64 = *mut SCOPE_TABLE_AMD64;
 // Skip interlocked and bit manipulation stuff because it is all intrinsics
 // Use the native Rust equivalents instead
-#[cfg(target_arch = "x86_64")]
+#[cfg(any(target_arch = "x86_64", target_arch = "aarch64"))]
 IFDEF!{
 pub const EXCEPTION_READ_FAULT: DWORD = 0;
 pub const EXCEPTION_WRITE_FAULT: DWORD = 1;
@@ -5529,7 +5529,7 @@ STRUCT!{struct IMAGE_ROM_HEADERS {
     OptionalHeader: IMAGE_ROM_OPTIONAL_HEADER,
 }}
 pub type PIMAGE_ROM_HEADERS = *mut IMAGE_ROM_HEADERS;
-#[cfg(target_arch = "x86_64")]
+#[cfg(any(target_arch = "x86_64", target_arch = "aarch64"))]
 IFDEF!{
 pub type IMAGE_NT_HEADERS = IMAGE_NT_HEADERS64;
 pub type PIMAGE_NT_HEADERS = PIMAGE_NT_HEADERS64;
@@ -7025,7 +7025,7 @@ STRUCT!{struct SLIST_ENTRY {
     Next: *mut SLIST_ENTRY,
 }}
 pub type PSLIST_ENTRY = *mut SLIST_ENTRY;
-#[cfg(target_arch = "x86_64")]
+#[cfg(any(target_arch = "x86_64", target_arch = "aarch64"))]
 IFDEF!{
 STRUCT!{struct SLIST_HEADER_s {
     Alignment: ULONGLONG,

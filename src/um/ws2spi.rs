@@ -738,12 +738,12 @@ FN!{stdcall LPWSCENABLENSPROVIDER(
     fEnable: BOOL,
 ) -> INT}
 extern "system" {
-    #[cfg(target_arch = "x86_64")]
+    #[cfg(any(target_arch = "x86_64", target_arch = "aarch64"))]
     pub fn WSCEnableNSProvider32(
         lpProviderId: LPGUID,
         fEnable: BOOL,
     ) -> INT;
-    #[cfg(target_arch = "x86_64")]
+    #[cfg(any(target_arch = "x86_64", target_arch = "aarch64"))]
     pub fn WSCInstallProviderAndChains64_32(
         lpProviderId: LPGUID,
         lpszProviderDllPath: LPWSTR,
